@@ -1,5 +1,3 @@
-[![Packagist version](https://badge.fury.io/ph/authy%2Fphp.svg)](https://packagist.org/packages/authy/php) [![Build Status](https://travis-ci.org/twilio/authy-php.svg?branch=master)](https://travis-ci.org/twilio/authy-php)
-
 # PHP Client for Twilio Authy Two-Factor Authentication (2FA) API
 
 Documentation for PHP usage of the Authy API lives in the [official Twilio documentation](https://www.twilio.com/docs/authy/api/).
@@ -18,17 +16,13 @@ For a full tutorial, check out the PHP/Laravel Authy Quickstarts in our docs:
 
 ## Authy PHP Installation
 
-This library requires PHP 5.6+
+This library requires PHP 7.2/.5+
 
-Install with [composer](https://www.twilio.com/docs/usage/tutorials/how-to-set-up-your-php-development-environment). The [`authy/php`](http://packagist.org/packages/authy/php) package is available on [Packagist](https://packagist.org/packages/authy/php).
+Install with [composer](https://www.twilio.com/docs/usage/tutorials/how-to-set-up-your-php-development-environment). The [`craftcodery/authy-php`](http://packagist.org/packages/craftcodery/authy-php) package is available on [Packagist](https://packagist.org/packages/craftcodery/authy-php).
 
-Include in your `composer.json` as follows:
-
-	{
-	    "require": {
-	        "authy/php": "3.0.5"
-	    }
-	}
+```bash
+composer require craftcodery/authy-php
+```
 
 ## Usage
 
@@ -58,20 +52,6 @@ $authy_api = new Authy\AuthyApi('#your_api_key');
 [Phone verification now lives in the Twilio API](https://www.twilio.com/docs/verify/api) and has [PHP support through the official Twilio helper libraries](https://www.twilio.com/docs/libraries/php). 
 
 [Legacy (V1) documentation here.](verify-legacy-v1.md) **Verify V1 is not recommended for new development. Please consider using [Verify V2](https://www.twilio.com/docs/verify/api)**.
-
-## Contributing
-
-You can use docker to run tests and develop locally without the need to install the dependencies directly in your machine:
-
-```
-git clone git@github.com:authy/authy-php.git
-cd authy-php
-make docker-build # Creates the docker image
-make docker-deps  # Install dependencies (in the `vendor` directory)
-make docker-test  # Runs the tests
-```
-
-To contribute, make your changes in a branch and send a Pull Request to the twilio/authy-php repo.
 
 ## Copyright
 
