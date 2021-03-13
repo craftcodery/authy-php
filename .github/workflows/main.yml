@@ -1,0 +1,25 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v5
+
+      - name: Run PHPUnit Tests (PHP 7.4)
+        uses: php-actions/phpunit@v2
+        with:
+          php_version: 7.4
+          php_extensions: curl json
+          configuration: phpunit.xml.dist
+          
+      - name: Run PHPUnit Tests (PHP 8.0
+        uses: php-actions/phpunit@v2
+        with:
+          php_version: 8.0
+          php_extensions: curl json
+          configuration: phpunit.xml.dist
