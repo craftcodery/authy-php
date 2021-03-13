@@ -17,7 +17,7 @@ jobs:
           php_extensions: curl json
           configuration: phpunit.xml.dist
           
-      - name: Run PHPUnit Tests (PHP 8.0
+      - name: Run PHPUnit Tests (PHP 8.0)
         uses: php-actions/phpunit@v2
         with:
           php_version: 8.0
