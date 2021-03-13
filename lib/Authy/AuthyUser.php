@@ -5,18 +5,6 @@ namespace Authy;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * ApiClient
- *
- * PHP version 7.4
- *
- * @category Services
- * @package  Authy
- * @author   David Cuadrado <david@authy.com>
- * @license  http://creativecommons.org/licenses/MIT/ MIT
- * @link     http://authy.github.com/pear
- */
-
-/**
  * User implementation. Extends from Authy_Response
  *
  * @category Services

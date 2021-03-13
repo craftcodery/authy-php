@@ -6,18 +6,6 @@ use Psr\Http\Message\ResponseInterface;
 use stdClass;
 
 /**
- * ApiClient
- *
- * PHP version 7.4
- *
- * @category Services
- * @package  Authy
- * @author   David Cuadrado <david@authy.com>
- * @license  http://creativecommons.org/licenses/MIT/ MIT
- * @link     http://authy.github.com/pear
- */
-
-/**
  * Friendly class to parse response from the authy API
  *
  * @category Services
@@ -51,9 +39,7 @@ class AuthyResponse
     public function __construct(ResponseInterface $guzzleResponse)
     {
         $this->guzzleResponse = $guzzleResponse;
-        $this->body = !isset($this->guzzleResponse->body)
-            ? json_decode($this->guzzleResponse->getBody())
-            : $this->guzzleResponse->body;
+        $this->body = $this->guzzleResponse->body ?? json_decode($this->guzzleResponse->getBody());
         $this->errors = new stdClass();
 
         $this->allocateAccurateErrorsAndBody();
@@ -66,7 +52,7 @@ class AuthyResponse
      */
     public function ok(): bool
     {
-        return $this->guzzleResponse->getStatusCode() == 200;
+        return $this->guzzleResponse->getStatusCode() === 200;
     }
 
     /**
@@ -76,7 +62,7 @@ class AuthyResponse
      */
     public function id(): ?int
     {
-        return isset($this->body->id) ? $this->body->id : null;
+        return $this->body->id ?? null;
     }
 
     /**
@@ -103,7 +89,7 @@ class AuthyResponse
      */
     public function getBodyValue(string $value)
     {
-        return isset($this->body->$value) ? $this->body->$value : null;
+        return $this->body->$value ?? null;
     }
 
     private function allocateAccurateErrorsAndBody(): void
@@ -114,7 +100,7 @@ class AuthyResponse
         } elseif ($this->guzzleResponse->getStatusCode() === 400) {
             $this->errors = $this->body;
             $this->body = new stdClass();
-        } elseif (!$this->ok() && gettype($this->body) === 'string') {
+        } elseif (!$this->ok() && is_string($this->body)) {
             $this->errors = (object) ["error" => $this->body];
             $this->body = new stdClass();
         }

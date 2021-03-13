@@ -6,18 +6,6 @@ use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 
 /**
- * ApiClient
- *
- * PHP version 7.4
- *
- * @category Services
- * @package  Authy
- * @author   David Cuadrado <david@authy.com>
- * @license  http://creativecommons.org/licenses/MIT/ MIT
- * @link     http://authy.github.com/pear
- */
-
-/**
  * Authy API interface.
  *
  * @category Services
@@ -28,7 +16,7 @@ use GuzzleHttp\HandlerStack;
  */
 class AuthyApi
 {
-    private const VERSION = '3.0.4';
+    private const VERSION = '4.0.0';
 
     /**
      * @var Client $client
@@ -241,8 +229,8 @@ class AuthyApi
     public function qrCode($authy_id, $opts = [])
     {
         $authy_id = urlencode($authy_id);
-        $resp = $this->rest->post("protected/json/users/{$authy_id}/secret", array_merge(
-            $this->default_options,
+        $resp = $this->getClient()->post("protected/json/users/{$authy_id}/secret", array_merge(
+            $this->getDefaultOptions(),
             ['query' => $opts]
         ));
 
@@ -274,7 +262,7 @@ class AuthyApi
             "code_length" => $codeLength
         ];
 
-        if ($locale != null) {
+        if ($locale !== null) {
             $query["locale"] = $locale;
         }
 
