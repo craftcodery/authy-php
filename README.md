@@ -16,7 +16,7 @@ For a full tutorial, check out the PHP/Laravel Authy Quickstarts in our docs:
 
 ## Authy PHP Installation
 
-This library requires PHP 7.2/.5+
+This library requires PHP 7.4+
 
 Install with [composer](https://www.twilio.com/docs/usage/tutorials/how-to-set-up-your-php-development-environment). The [`craftcodery/authy-php`](http://packagist.org/packages/craftcodery/authy-php) package is available on [Packagist](https://packagist.org/packages/craftcodery/authy-php).
 
